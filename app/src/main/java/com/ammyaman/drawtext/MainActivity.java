@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -19,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +30,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String J="aA";
+        String S="aAAbbbb";
+        int counter =0;
+        for(char i:J.toCharArray()){
+            if(S.contains(i+"")){
+               for(int p=0;p<S.toCharArray().length;p++){
+                   if(i== S.charAt(p)){
+                       counter++;
+                   }
+               }
+
+            }
+        }
+
+        Log.e("Result ",counter+"");
 
     }
 
@@ -62,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             mTextPaint.setColor(Color.WHITE); // Text Color
             mTextPaint.setTextAlign(Paint.Align.CENTER);
             mTextPaint.setTextSize(150); // Text Size
+            mTextPaint.setShadowLayer(5.0f, 10.0f, 10.0f, Color.BLACK);
 
             float scale = getResources().getDisplayMetrics().density;
             int textWidth = canvas.getWidth() - (int) (60 * scale);
